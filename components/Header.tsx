@@ -6,12 +6,10 @@ interface IHeader {
   title: string
 }
 
-const Header = (props: IHeader) => {
+export const Header = (props: IHeader) => {
   return (
     <div>
       {props.title}
     </div>
   )
 }
-
-export default Header
