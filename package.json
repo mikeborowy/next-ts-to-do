@@ -6,11 +6,11 @@
   "scripts": {
     "start": "next",
     "build": "next build",
-    "type:check": "tsc",
-    "start:serv": "NODE_ENV=production node dist/index.js",
-    "dev:serv": "concurrently \"tsc -w\" \"nodemon dist/index.js\"",
-    "dwn:schema": "apollo service:download --endpoint=http://localhost:3001/graphql ./resources/schema.json",
-    "gen:types": "apollo client:codegen -localSchemaFile=./resources/schema.json --target=typescript --includes=./graphql/**/*.graphql --addTypeName --outputFlat ./resources/gql-types.ts"
+    "ts-check": "tsc",
+    "server-prod": "NODE_ENV=production node dist/index.js",
+    "server-dev": "concurrently \"tsc -w\" \"nodemon dist/index.js\"",
+    "apollo-dwn-schema": "apollo service:download --endpoint=http://localhost:3001/graphql ./resources/schema.json",
+    "apollo-gen-types": "apollo client:codegen --localSchemaFile=./resources/schema.json --target=typescript --includes=./graphql/**/*.graphql --addTypename --outputFlat ./resources/gql-types.ts"
   },
   "author": "Mike Borowy",
   "license": "ISC",
@@ -19,6 +19,7 @@
     "apollo-server-express": "^2.5.0",
     "express": "^4.16.4",
     "graphql": "^14.3.0",
+    "graphql-tag": "^2.10.1",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^8.0.0",
     "react": "^16.8.1",

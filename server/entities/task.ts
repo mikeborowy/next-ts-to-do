@@ -8,11 +8,11 @@ export enum TaskStatus {
 @Entity()
 export class Task {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column({ type: 'varchar', length: 500 })
-  title: string;
+  title!: string;
 
   @Column({ type: 'varchar', length: 16 })
-  status: TaskStatus;
+  status!: TaskStatus;
 }

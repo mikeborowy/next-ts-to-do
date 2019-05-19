@@ -151,11 +151,11 @@ export enum TaskStatus {
 }
 
 export interface CreateTaskInput {
-  title?: string | null;
+  title: string;
 }
 
 export interface UpdateTaskInput {
-  id?: number | null;
+  id: number;
   title?: string | null;
   status?: TaskStatus | null;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import initApollo from './initApollo';
+import initApollo from '../server/initApollo';
 import Head from 'next/head';
 import { getDataFromTree } from 'react-apollo';
 import { MyApp, MyAppProps } from '../pages/_app';

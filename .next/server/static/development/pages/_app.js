@@ -93,61 +93,6 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "./hoc/initApollo.tsx":
-/*!****************************!*\
-  !*** ./hoc/initApollo.tsx ***!
-  \****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return initApollo; });
-/* harmony import */ var apollo_boost__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! apollo-boost */ "apollo-boost");
-/* harmony import */ var apollo_boost__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(apollo_boost__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1__);
-
-
-var apolloClient; // Polyfill fetch() on the server (used by apollo-client)
-
-if (true) {
-  global.fetch = isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default.a;
-}
-
-function create(initialState) {
-  // Check out https://github.com/zeit/next.js/pull/4611 if you want to use the AWSAppSyncClient
-  return new apollo_boost__WEBPACK_IMPORTED_MODULE_0__["ApolloClient"]({
-    connectToDevTools: false,
-    ssrMode: !false,
-    // Disables forceFetch on the server (so queries are only run once)
-    link: new apollo_boost__WEBPACK_IMPORTED_MODULE_0__["HttpLink"]({
-      uri: 'https://api.graph.cool/simple/v1/cixmkt2ul01q00122mksg82pn',
-      // Server URL (must be absolute)
-      credentials: 'same-origin' // Additional fetch() options like `credentials` or `headers`
-
-    }),
-    cache: new apollo_boost__WEBPACK_IMPORTED_MODULE_0__["InMemoryCache"]().restore(initialState || {})
-  });
-}
-
-function initApollo(initialState) {
-  // Make sure to create a new client for every server-side request so that data
-  // isn't shared between connections (which would be bad)
-  if (true) {
-    return create(initialState);
-  } // Reuse client on the client-side
-
-
-  if (!apolloClient) {
-    apolloClient = create(initialState);
-  }
-
-  return apolloClient;
-}
-
-/***/ }),
-
 /***/ "./hoc/withApolloClient.tsx":
 /*!**********************************!*\
   !*** ./hoc/withApolloClient.tsx ***!
@@ -170,7 +115,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _initApollo__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./initApollo */ "./hoc/initApollo.tsx");
+/* harmony import */ var _server_initApollo__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../server/initApollo */ "./server/initApollo.ts");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! next/head */ "next/head");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_12__);
 /* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-apollo */ "react-apollo");
@@ -185,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/mikeborowy/Dev/react-ts-next-to-do/hoc/withApolloClient.tsx";
+var _jsxFileName = "/Users/michalborowy/_dev/react-ts-next-to-do/hoc/withApolloClient.tsx";
 
 
 
@@ -228,7 +173,7 @@ var _jsxFileName = "/Users/mikeborowy/Dev/react-ts-next-to-do/hoc/withApolloClie
                 case 6:
                   // Run all GraphQL queries in the component tree
                   // and extract the resulting data
-                  apollo = Object(_initApollo__WEBPACK_IMPORTED_MODULE_11__["default"])();
+                  apollo = Object(_server_initApollo__WEBPACK_IMPORTED_MODULE_11__["default"])();
 
                   if (false) {}
 
@@ -291,7 +236,7 @@ var _jsxFileName = "/Users/mikeborowy/Dev/react-ts-next-to-do/hoc/withApolloClie
       Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_4__["default"])(this, Apollo);
 
       _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(Apollo).call(this, props));
-      _this.apolloClient = Object(_initApollo__WEBPACK_IMPORTED_MODULE_11__["default"])(props.apolloState);
+      _this.apolloClient = Object(_server_initApollo__WEBPACK_IMPORTED_MODULE_11__["default"])(props.apolloState);
       return _this;
     }
 
@@ -4157,7 +4102,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/mikeborowy/Dev/react-ts-next-to-do/pages/_app.tsx";
+var _jsxFileName = "/Users/michalborowy/_dev/react-ts-next-to-do/pages/_app.tsx";
 
 
 
@@ -4206,6 +4151,61 @@ function (_App) {
   return MyApp;
 }(next_app__WEBPACK_IMPORTED_MODULE_6___default.a);
 /* harmony default export */ __webpack_exports__["default"] = (Object(_hoc_withApolloClient__WEBPACK_IMPORTED_MODULE_8__["default"])(MyApp));
+
+/***/ }),
+
+/***/ "./server/initApollo.ts":
+/*!******************************!*\
+  !*** ./server/initApollo.ts ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return initApollo; });
+/* harmony import */ var apollo_boost__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! apollo-boost */ "apollo-boost");
+/* harmony import */ var apollo_boost__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(apollo_boost__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var apolloClient; // Polyfill fetch() on the server (used by apollo-client)
+
+if (true) {
+  global.fetch = isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_1___default.a;
+}
+
+function create(initialState) {
+  // Check out https://github.com/zeit/next.js/pull/4611 if you want to use the AWSAppSyncClient
+  return new apollo_boost__WEBPACK_IMPORTED_MODULE_0__["ApolloClient"]({
+    connectToDevTools: false,
+    ssrMode: !false,
+    // Disables forceFetch on the server (so queries are only run once)
+    link: new apollo_boost__WEBPACK_IMPORTED_MODULE_0__["HttpLink"]({
+      uri: 'http://localhost:3001/graphql',
+      // Server URL (must be absolute)
+      credentials: 'same-origin' // Additional fetch() options like `credentials` or `headers`
+
+    }),
+    cache: new apollo_boost__WEBPACK_IMPORTED_MODULE_0__["InMemoryCache"]().restore(initialState || {})
+  });
+}
+
+function initApollo(initialState) {
+  // Make sure to create a new client for every server-side request so that data
+  // isn't shared between connections (which would be bad)
+  if (true) {
+    return create(initialState);
+  } // Reuse client on the client-side
+
+
+  if (!apolloClient) {
+    apolloClient = create(initialState);
+  }
+
+  return apolloClient;
+}
 
 /***/ }),
 
