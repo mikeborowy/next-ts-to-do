@@ -10,8 +10,8 @@ import { Loader } from '../components/Loader';
 import { Task, ITask } from '../components/Task';
 import { CreateTaskFormWithGQL } from '../components/CreateTaskForm';
 
-interface IData <T>{
-
+interface IData{
+  tasks:String[]
 }
 
 interface IQuery {
@@ -47,7 +47,7 @@ export default () => {
     }
     return (
       <div>
-        <CreateTaskFormWithGQL onCreateTas={refetch}/>
+        <CreateTaskFormWithGQL onCreateTask={refetch}/>
         {loading ? <Loader /> : renderTasksList(tasks)}
       </div>
       )
