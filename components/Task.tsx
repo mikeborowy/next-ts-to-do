@@ -12,11 +12,11 @@ export interface ITask {
 
 export interface Props extends ITask{
   onDeleteTask?: (id: number) => void;
-  onTaskStatusChange?: (id: number, status: TaskStatus) => void;
+  onChangeTaskStatus?: (id: number, status: TaskStatus) => void;
 }
 
 export const Task = React.memo<Props>(
-  ({ id, title, status, onDeleteTask, onTaskStatusChange }) => {
+  ({ id, title, status, onDeleteTask, onChangeTaskStatus }) => {
     return (
       <li>
         <label>
@@ -27,7 +27,7 @@ export const Task = React.memo<Props>(
               const status = e.target.checked
                 ? TaskStatus.completed
                 : TaskStatus.active;
-                onTaskStatusChange && onTaskStatusChange(id, status);
+                onChangeTaskStatus && onChangeTaskStatus(id, status);
             }}
           />
           <span className="checkMark" />

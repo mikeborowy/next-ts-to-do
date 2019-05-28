@@ -1,11 +1,15 @@
 import { Query, withApollo } from 'react-apollo';
+import CHANGE_STATUS_MUTATION from '../graphql/change-status.graphql';
 import TASKS_QUERY from '../graphql/tasks.graphql';
 import DELETE_TASK_MUTATION from '../graphql/delete-task.graphql';
 import {
-  TasksQuery as ITasksQuery,
-  TaskQueryVariables as ITaskQueryVariables,
+  ChangeStatusMutation as IChangeStatusMutation,
+  ChangeStatusMutationVariables as IChangeStatusMutationVariables,
   DeleteTaskMutation as IDeleteTaskMutation,
   DeleteTaskMutationVariables as IDeleteTaskMutationVariables,
+  TasksQuery as ITasksQuery,
+  TaskQueryVariables as ITaskQueryVariables,
+  TaskStatus as ITaskStatus,
 } from '../resources/gql-types';
 import { Layout } from "../components/Layout";
 import { Loader } from '../components/Loader';
@@ -31,6 +35,12 @@ export class ApolloTasksQuery extends Query<ITasksQuery, ITaskQueryVariables> {}
 
 export default withApollo((props) => {
   const {client} = props;
+  const changeTaskStatus = async (id:number, status: ITaskStatus, apollo:ApolloClient<any>) => {
+    apollo.mutate<IChangeStatusMutation, IChangeStatusMutationVariables>({
+      mutation: CHANGE_STATUS_MUTATION,
+      variables: {id, status}
+    })
+  }
 
   const deleteTask = async(id:number, apollo:ApolloClient<any>) => {
     const result = await apollo.mutate<
@@ -55,6 +65,11 @@ export default withApollo((props) => {
     }
   }
 
+  const onChangeTaskStatus = useCallback(
+    (id: number, status: ITaskStatus) => changeTaskStatus(id, status, client),
+    []
+  );
+
   const onDeleteTask = useCallback(
     (id:number) => deleteTask(id, client),
     []
@@ -63,7 +78,7 @@ export default withApollo((props) => {
   const renderTasksList = (tasks: ITask[]) => {
     if (tasks) {
       const tasksList = tasks.map((task: ITask, i: number) => {
-        const taskProps = {...task, onDeleteTask}
+        const taskProps = {...task, onChangeTaskStatus, onDeleteTask}
         return <Task key={i} {...taskProps} />
       });
 
