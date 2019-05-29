@@ -1,14 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
 import { colors } from '../styles/constants';
-import { TaskStatus } from '../resources/gql-types';
+import { TaskStatus as ITaskStatus } from '../resources/gql-types';
 
-export interface TaskFilter {
-  status?: TaskStatus;
+export interface ITaskFilter {
+  status?: ITaskStatus;
 }
 
 export interface Props {
-  filter: TaskFilter;
+  filter: ITaskFilter;
 }
 
 export const TaskFilter: React.FunctionComponent<Props> = ({ filter }) => {
@@ -20,18 +20,18 @@ export const TaskFilter: React.FunctionComponent<Props> = ({ filter }) => {
         </Link>
       </li>
       <li
-        className={filter.status === TaskStatus.active ? 'active' : undefined}
+        className={filter.status === ITaskStatus.active ? 'active' : undefined}
       >
-        <Link href={{ pathname: '/', query: { status: TaskStatus.active } }}>
+        <Link href={{ pathname: '/', query: { status: ITaskStatus.active } }}>
           <a>Active</a>
         </Link>
       </li>
       <li
         className={
-          filter.status === TaskStatus.completed ? 'active' : undefined
+          filter.status === ITaskStatus.completed ? 'active' : undefined
         }
       >
-        <Link href={{ pathname: '/', query: { status: TaskStatus.completed } }}>
+        <Link href={{ pathname: '/', query: { status: ITaskStatus.completed } }}>
           <a>Completed</a>
         </Link>
       </li>

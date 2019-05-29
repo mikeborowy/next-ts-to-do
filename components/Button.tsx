@@ -3,7 +3,7 @@ import { colors } from '../styles/constants';
 
 export interface Props {
   label: string;
-  type?: string;
+  type?: string | undefined;
 }
 
 export const Button: React.FunctionComponent<Props> = ({
