@@ -3,19 +3,22 @@ import Error from 'next/error';
 import { Layout } from '../components/Layout';
 import { WrappedUpdateTaskForm } from '../components/UpdateTaskForm';
 import { Query } from 'react-apollo';
-import { TaskQuery, TaskQueryVariables } from '../resources/gql-types';
+import {
+  TaskQuery as ITaskQuery,
+  TaskQueryVariables as ITaskQueryVariables
+} from '../resources/gql-types';
 import TASK_QUERY from '../graphql/task.graphql';
 import { Loader } from '../components/Loader';
 
-class ApolloTaskQuery extends Query<TaskQuery, TaskQueryVariables> {}
+class ApolloTaskQuery extends Query<ITaskQuery, ITaskQueryVariables> { }
 
-interface InitialProps {
+interface IDefaultProps {
   id: number;
 }
 
-interface Props extends InitialProps {}
+interface Props extends IDefaultProps { }
 
-const Edit: NextStatelessComponent<Props, InitialProps> = (props) => {
+const Edit: NextStatelessComponent<Props, IDefaultProps> = (props) => {
   const { id } = props;
 
   if (!id) {
@@ -32,10 +35,10 @@ const Edit: NextStatelessComponent<Props, InitialProps> = (props) => {
           return loading ? (
             <Loader />
           ) : (
-            <WrappedUpdateTaskForm
-              initialInput={task ? { id: task.id, title: task.title } : {}}
-            />
-          );
+              <WrappedUpdateTaskForm
+                initialInput={task ? { id: task.id, title: task.title } : {}}
+              />
+            );
         }}
       </ApolloTaskQuery>
     </Layout>

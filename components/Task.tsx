@@ -1,44 +1,44 @@
 import React from 'react';
 import Link from 'next/link';
 import { colors } from '../styles/constants';
-import { TaskStatus } from '../resources/gql-types';
+import { TaskStatus as ITaskStatus } from '../resources/gql-types';
 
 export interface ITask {
   id: number;
   title: string;
-  status: TaskStatus;
+  status: ITaskStatus;
   key?: number | string;
 };
 
-export interface Props extends ITask{
+export interface Props extends ITask {
   onDeleteTask?: (id: number) => void;
-  onChangeTaskStatus?: (id: number, status: TaskStatus) => void;
+  onChangeTaskStatus?: (id: number, status: ITaskStatus) => void;
 }
 
-export const Task = React.memo<Props>(
-  ({ id, title, status, onDeleteTask, onChangeTaskStatus }) => {
-    return (
-      <li>
-        <label>
-          <input
-            type="checkbox"
-            checked={status === TaskStatus.completed}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              const status = e.target.checked
-                ? TaskStatus.completed
-                : TaskStatus.active;
-                onChangeTaskStatus && onChangeTaskStatus(id, status);
-            }}
-          />
-          <span className="checkMark" />
-        </label>
-        <div className="title">
-          <Link href={{ pathname: '/edit', query: { id } }}>
-            <a>{title}</a>
-          </Link>
-        </div>
-        <button onClick={() => { onDeleteTask && onDeleteTask(id) }}>&times;</button>
-        <style jsx>{`
+export const Task = React.memo<Props>((props) => {
+  const { id, title, status, onDeleteTask, onChangeTaskStatus } = props;
+  return (
+    <li>
+      <label>
+        <input
+          type="checkbox"
+          checked={status === ITaskStatus.completed}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            const status = e.target.checked
+              ? ITaskStatus.completed
+              : ITaskStatus.active;
+            onChangeTaskStatus && onChangeTaskStatus(id, status);
+          }}
+        />
+        <span className="checkMark" />
+      </label>
+      <div className="title">
+        <Link href={{ pathname: '/edit', query: { id } }}>
+          <a>{title}</a>
+        </Link>
+      </div>
+      <button onClick={() => { onDeleteTask && onDeleteTask(id) }}>&times;</button>
+      <style jsx>{`
           li {
             align-items: center;
             border: 1px solid ${colors.border};
@@ -117,7 +117,7 @@ export const Task = React.memo<Props>(
             color: white;
           }
         `}</style>
-      </li>
-    );
-  }
+    </li>
+  );
+}
 );

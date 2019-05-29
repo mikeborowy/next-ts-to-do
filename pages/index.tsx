@@ -8,7 +8,7 @@ import {
   DeleteTaskMutation as IDeleteTaskMutation,
   DeleteTaskMutationVariables as IDeleteTaskMutationVariables,
   TasksQuery as ITasksQuery,
-  TaskQueryVariables as ITaskQueryVariables,
+  TasksQueryVariables as ITasksQueryVariables,
   TaskStatus as ITaskStatus,
 } from '../resources/gql-types';
 import { Layout } from "../components/Layout";
@@ -16,7 +16,7 @@ import { Loader } from '../components/Loader';
 import { Task, ITask } from '../components/Task';
 import { CreateTaskFormWithGQL } from '../components/CreateTaskForm';
 import { ApolloClient } from 'apollo-boost';
-import { useCallback } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { TaskFilter, ITaskFilter } from '../components/TaskFilter';
 import { NextFunctionComponent } from 'next';
 
@@ -31,24 +31,45 @@ export interface IQuery {
   refetch: () => {};
 }
 
-export class ApolloTasksQuery extends Query<ITasksQuery, ITaskQueryVariables> { }
+export class ApolloTasksQuery extends Query<ITasksQuery, ITasksQueryVariables> { }
 
 export interface IDefaultProps {
   taskFilter: ITaskFilter;
-  status?: ITaskStatus;
 }
 
-export interface IProps extends IDefaultProps {
-
-}
+export interface IProps extends IDefaultProps { }
 
 const MainPage: NextFunctionComponent<WithApolloClient<IProps>, IDefaultProps> = (props) => {
   const { client, taskFilter } = props;
   const changeTaskStatus = async (id: number, status: ITaskStatus, taskFilter: ITaskFilter, apollo: ApolloClient<any>) => {
+    debugger
     apollo.mutate<IChangeStatusMutation, IChangeStatusMutationVariables>({
       mutation: CHANGE_STATUS_MUTATION,
       variables: { id, status },
+      update: (cache) => {
+        const tasksCache = cache.readQuery<ITasksQuery, ITasksQueryVariables>({
+          query: TASKS_QUERY,
+          variables: {
+            status: taskFilter.status
+          }
+        });
 
+        if (tasksCache) {
+          cache.writeQuery<ITasksQuery, ITasksQueryVariables>({
+            query: TASKS_QUERY,
+            variables: {
+              status: taskFilter.status
+            },
+            data: {
+              tasks: taskFilter.status
+                ? tasksCache.tasks.filter(
+                  task => task.status === taskFilter.status
+                )
+                : tasksCache.tasks
+            }
+          })
+        }
+      }
     })
   }
 
@@ -62,7 +83,7 @@ const MainPage: NextFunctionComponent<WithApolloClient<IProps>, IDefaultProps> =
     });
 
     if (result && result.data && result.data.deleteTask) {
-      const tasksCache = apollo.readQuery<ITasksQuery, ITaskQueryVariables>({
+      const tasksCache = apollo.readQuery<ITasksQuery, ITasksQueryVariables>({
         query: TASKS_QUERY
       });
 
