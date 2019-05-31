@@ -147,7 +147,7 @@ export interface UpdateTaskMutationVariables {
 
 export enum TaskStatus {
   active = "active",
-  completed = "completed",
+  completed = "completed"
 }
 
 export interface CreateTaskInput {
@@ -155,7 +155,7 @@ export interface CreateTaskInput {
 }
 
 export interface UpdateTaskInput {
-  id: number;
+  id?: number;
   title?: string | null;
   status?: TaskStatus | null;
 }

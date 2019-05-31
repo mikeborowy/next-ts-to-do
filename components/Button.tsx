@@ -3,13 +3,16 @@ import { colors } from '../styles/constants';
 
 export interface Props {
   label: string;
-  type?: string | undefined;
+  type: string;
 }
 
-export const Button: React.FunctionComponent<Props> = ({
-  label,
-  type = 'submit'
-}) => {
+export const Button: React.FunctionComponent<Props> = (props) => {
+
+  const {
+    label,
+    type
+  } = props;
+
   return (
     <button type={type}>
       {label}
@@ -29,6 +32,6 @@ export const Button: React.FunctionComponent<Props> = ({
           color: white;
         }
       `}</style>
-    </button>
+    </button >
   );
 };

@@ -32,12 +32,12 @@ const Edit: NextStatelessComponent<Props, IDefaultProps> = (props) => {
             return <p>Something wrong happened</p>;
           }
           const task = data ? data.task : null;
+          const initialInput = task ? { id: task.id, title: task.title } : {};
+
           return loading ? (
             <Loader />
           ) : (
-              <WrappedUpdateTaskForm
-                initialInput={task ? { id: task.id, title: task.title } : {}}
-              />
+              <WrappedUpdateTaskForm initialInput={initialInput} />
             );
         }}
       </ApolloTaskQuery>

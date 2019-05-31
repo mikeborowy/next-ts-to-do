@@ -12,14 +12,14 @@ import UPDATE_TASK_MUTATION from '../graphql/update-task.graphql';
 import Router from 'next/router';
 
 export interface Props {
-  initialInput: UpdateTaskInput;
+  initialInput: UpdateTaskInput | {};
 }
 
 export interface UpdateTaskMutationProps {
   updateTask?: MutationFunc<UpdateTaskMutation, UpdateTaskMutationVariables>;
 }
 
-export interface AllProps extends Props, UpdateTaskMutationProps {}
+export interface AllProps extends Props, UpdateTaskMutationProps { }
 
 export interface State {
   input: UpdateTaskInput;
@@ -70,7 +70,7 @@ export class UpdateTaskForm extends React.Component<AllProps, State> {
             value={input.title || undefined}
           />
         </FormField>
-        <Button label="Save" />
+        <Button label="Save" type="submit" />
         <style jsx>{formStyle}</style>
       </form>
     );

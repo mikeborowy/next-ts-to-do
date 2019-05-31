@@ -439,45 +439,48 @@ var Task = react__WEBPACK_IMPORTED_MODULE_1___default.a.memo(function (props) {
       status = props.status,
       onDeleteTask = props.onDeleteTask,
       onChangeTaskStatus = props.onChangeTaskStatus;
+
+  var onChangeHandler = function onChangeHandler(evt) {
+    var status = evt.target.checked ? _resources_gql_types__WEBPACK_IMPORTED_MODULE_4__["TaskStatus"].completed : _resources_gql_types__WEBPACK_IMPORTED_MODULE_4__["TaskStatus"].active;
+    onChangeTaskStatus(id, status);
+  };
+
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
     className: styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a.dynamic([["2622381892", [_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].border, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].liteBg, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].text, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary]]]),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 29
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
     className: styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a.dynamic([["2622381892", [_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].border, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].liteBg, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].text, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary]]]),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 30
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
     type: "checkbox",
     checked: status === _resources_gql_types__WEBPACK_IMPORTED_MODULE_4__["TaskStatus"].completed,
-    onChange: function onChange(e) {
-      var status = e.target.checked ? _resources_gql_types__WEBPACK_IMPORTED_MODULE_4__["TaskStatus"].completed : _resources_gql_types__WEBPACK_IMPORTED_MODULE_4__["TaskStatus"].active;
-      onChangeTaskStatus && onChangeTaskStatus(id, status);
-    },
+    onChange: onChangeHandler,
     className: styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a.dynamic([["2622381892", [_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].border, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].liteBg, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].text, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary]]]),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 31
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", {
     className: styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a.dynamic([["2622381892", [_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].border, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].liteBg, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].text, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary]]]) + " " + "checkMark",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 36
     },
     __self: this
   })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a.dynamic([["2622381892", [_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].border, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].liteBg, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].text, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary]]]) + " " + "title",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 38
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
@@ -489,14 +492,14 @@ var Task = react__WEBPACK_IMPORTED_MODULE_1___default.a.memo(function (props) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 39
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
     className: styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a.dynamic([["2622381892", [_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].border, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].liteBg, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].text, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary]]]),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 40
     },
     __self: this
   }, title))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
@@ -506,14 +509,14 @@ var Task = react__WEBPACK_IMPORTED_MODULE_1___default.a.memo(function (props) {
     className: styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a.dynamic([["2622381892", [_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].border, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].liteBg, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].text, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary]]]),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 43
     },
     __self: this
   }, "\xD7"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
     id: "2622381892",
     dynamic: [_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].border, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].liteBg, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].text, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, _styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary],
     __self: this
-  }, "li.__jsx-style-dynamic-selector{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;border:1px solid ".concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].border, ";display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;padding:14px;}li.__jsx-style-dynamic-selector+li.__jsx-style-dynamic-selector{margin-top:-1px;}li.__jsx-style-dynamic-selector:nth-child(odd){background:").concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].liteBg, ";}label.__jsx-style-dynamic-selector{cursor:pointer;}input.__jsx-style-dynamic-selector{cursor:pointer;opacity:0;pointer-events:none;position:absolute;}.checkMark.__jsx-style-dynamic-selector{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;border:1px solid ").concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, ";border-radius:50%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;height:30px;width:30px;}.checkMark.__jsx-style-dynamic-selector:before{border:solid ").concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, ";border-width:0 3px 3px 0;content:'';display:block;height:12px;opacity:0;-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);width:7px;}input.__jsx-style-dynamic-selector:checked+.checkMark.__jsx-style-dynamic-selector:before{opacity:1;}.checkMark.__jsx-style-dynamic-selector:hover{box-shadow:inset 0 0 0 2px ").concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, ";}.title.__jsx-style-dynamic-selector{margin:0 20px;}.title.__jsx-style-dynamic-selector a.__jsx-style-dynamic-selector{color:").concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].text, ";display:block;}.title.__jsx-style-dynamic-selector a.__jsx-style-dynamic-selector:hover{color:").concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, ";}button.__jsx-style-dynamic-selector{background:").concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, ";border:none;border-radius:50%;cursor:pointer;color:").concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, ";-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;font-size:11px;font-weight:bold;height:20px;line-height:20px;margin:0 0 0 auto;outline:0;padding:0;text-align:center;width:20px;}button.__jsx-style-dynamic-selector:hover{background:").concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, ";color:white;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9taWtlYm9yb3d5L0Rldi9yZWFjdC10cy1uZXh0LXRvLWRvL2NvbXBvbmVudHMvVGFzay50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBd0NrQixBQUdnQyxBQU1ILEFBR3dCLEFBR3pCLEFBR0EsQUFNSSxBQVN1QixBQVVoQyxBQUc4QyxBQUcxQyxBQUdxQixBQUlBLEFBR0ssQUFpQkEsVUFoQzFDLElBTUEsQ0FsQ0EsQUFHWSxDQVRaLFNBVXNCLFVBaUNOLEFBSWhCLEtBNUNBLEFBK0NjLEFBaUJBLEVBM0NhLEdBYlAsSUFpQ3BCLEdBT29CLEFBaUJwQixJQS9CQSxPQXpCQSxJQWFhLEdBMkJJLFFBMUJELE9BMkJxQixPQTFCdkIsQ0FqQ2tDLEFBcUJBLFdBYXBDLFVBQ2MsTUF5QlYsbUJBM0RELEFBcUJLLGtCQUNMLG1CQXNDRSxlQUNFLE9BMUJQLFVBQ1osQUEwQmMsS0E3REMsT0E4REksTUE3RG5CLEtBcUJ5QixNQXlDTCxrQkFDUixVQUNBLFVBQ1Esa0JBQ1AsV0FDYiwwQkE3Q2MsWUFDRCxXQUNiIiwiZmlsZSI6Ii9Vc2Vycy9taWtlYm9yb3d5L0Rldi9yZWFjdC10cy1uZXh0LXRvLWRvL2NvbXBvbmVudHMvVGFzay50c3giLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xuaW1wb3J0IExpbmsgZnJvbSAnbmV4dC9saW5rJztcbmltcG9ydCB7IGNvbG9ycyB9IGZyb20gJy4uL3N0eWxlcy9jb25zdGFudHMnO1xuaW1wb3J0IHsgVGFza1N0YXR1cyBhcyBJVGFza1N0YXR1cyB9IGZyb20gJy4uL3Jlc291cmNlcy9ncWwtdHlwZXMnO1xuXG5leHBvcnQgaW50ZXJmYWNlIElUYXNrIHtcbiAgaWQ6IG51bWJlcjtcbiAgdGl0bGU6IHN0cmluZztcbiAgc3RhdHVzOiBJVGFza1N0YXR1cztcbiAga2V5PzogbnVtYmVyIHwgc3RyaW5nO1xufTtcblxuZXhwb3J0IGludGVyZmFjZSBQcm9wcyBleHRlbmRzIElUYXNrIHtcbiAgb25EZWxldGVUYXNrPzogKGlkOiBudW1iZXIpID0+IHZvaWQ7XG4gIG9uQ2hhbmdlVGFza1N0YXR1cz86IChpZDogbnVtYmVyLCBzdGF0dXM6IElUYXNrU3RhdHVzKSA9PiB2b2lkO1xufVxuXG5leHBvcnQgY29uc3QgVGFzayA9IFJlYWN0Lm1lbW88UHJvcHM+KChwcm9wcykgPT4ge1xuICBjb25zdCB7IGlkLCB0aXRsZSwgc3RhdHVzLCBvbkRlbGV0ZVRhc2ssIG9uQ2hhbmdlVGFza1N0YXR1cyB9ID0gcHJvcHM7XG4gIHJldHVybiAoXG4gICAgPGxpPlxuICAgICAgPGxhYmVsPlxuICAgICAgICA8aW5wdXRcbiAgICAgICAgICB0eXBlPVwiY2hlY2tib3hcIlxuICAgICAgICAgIGNoZWNrZWQ9e3N0YXR1cyA9PT0gSVRhc2tTdGF0dXMuY29tcGxldGVkfVxuICAgICAgICAgIG9uQ2hhbmdlPXsoZTogUmVhY3QuQ2hhbmdlRXZlbnQ8SFRNTElucHV0RWxlbWVudD4pID0+IHtcbiAgICAgICAgICAgIGNvbnN0IHN0YXR1cyA9IGUudGFyZ2V0LmNoZWNrZWRcbiAgICAgICAgICAgICAgPyBJVGFza1N0YXR1cy5jb21wbGV0ZWRcbiAgICAgICAgICAgICAgOiBJVGFza1N0YXR1cy5hY3RpdmU7XG4gICAgICAgICAgICBvbkNoYW5nZVRhc2tTdGF0dXMgJiYgb25DaGFuZ2VUYXNrU3RhdHVzKGlkLCBzdGF0dXMpO1xuICAgICAgICAgIH19XG4gICAgICAgIC8+XG4gICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImNoZWNrTWFya1wiIC8+XG4gICAgICA8L2xhYmVsPlxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0aXRsZVwiPlxuICAgICAgICA8TGluayBocmVmPXt7IHBhdGhuYW1lOiAnL2VkaXQnLCBxdWVyeTogeyBpZCB9IH19PlxuICAgICAgICAgIDxhPnt0aXRsZX08L2E+XG4gICAgICAgIDwvTGluaz5cbiAgICAgIDwvZGl2PlxuICAgICAgPGJ1dHRvbiBvbkNsaWNrPXsoKSA9PiB7IG9uRGVsZXRlVGFzayAmJiBvbkRlbGV0ZVRhc2soaWQpIH19PiZ0aW1lczs8L2J1dHRvbj5cbiAgICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgICAgICBsaSB7XG4gICAgICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICAgICAgYm9yZGVyOiAxcHggc29saWQgJHtjb2xvcnMuYm9yZGVyfTtcbiAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICBwYWRkaW5nOiAxNHB4O1xuICAgICAgICAgIH1cbiAgICAgICAgICBsaSArIGxpIHtcbiAgICAgICAgICAgIG1hcmdpbi10b3A6IC0xcHg7XG4gICAgICAgICAgfVxuICAgICAgICAgIGxpOm50aC1jaGlsZChvZGQpIHtcbiAgICAgICAgICAgIGJhY2tncm91bmQ6ICR7Y29sb3JzLmxpdGVCZ307XG4gICAgICAgICAgfVxuICAgICAgICAgIGxhYmVsIHtcbiAgICAgICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgICB9XG4gICAgICAgICAgaW5wdXQge1xuICAgICAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICAgICAgb3BhY2l0eTogMDtcbiAgICAgICAgICAgIHBvaW50ZXItZXZlbnRzOiBub25lO1xuICAgICAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgICAgIH1cbiAgICAgICAgICAuY2hlY2tNYXJrIHtcbiAgICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICAgICAgICBib3JkZXI6IDFweCBzb2xpZCAke2NvbG9ycy5wcmltYXJ5fTtcbiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgICAgIGhlaWdodDogMzBweDtcbiAgICAgICAgICAgIHdpZHRoOiAzMHB4O1xuICAgICAgICAgIH1cbiAgICAgICAgICAuY2hlY2tNYXJrOmJlZm9yZSB7XG4gICAgICAgICAgICBib3JkZXI6IHNvbGlkICR7Y29sb3JzLnByaW1hcnl9O1xuICAgICAgICAgICAgYm9yZGVyLXdpZHRoOiAwIDNweCAzcHggMDtcbiAgICAgICAgICAgIGNvbnRlbnQ6ICcnO1xuICAgICAgICAgICAgZGlzcGxheTogYmxvY2s7XG4gICAgICAgICAgICBoZWlnaHQ6IDEycHg7XG4gICAgICAgICAgICBvcGFjaXR5OiAwO1xuICAgICAgICAgICAgdHJhbnNmb3JtOiByb3RhdGUoNDVkZWcpO1xuICAgICAgICAgICAgd2lkdGg6IDdweDtcbiAgICAgICAgICB9XG4gICAgICAgICAgaW5wdXQ6Y2hlY2tlZCArIC5jaGVja01hcms6YmVmb3JlIHtcbiAgICAgICAgICAgIG9wYWNpdHk6IDE7XG4gICAgICAgICAgfVxuICAgICAgICAgIC5jaGVja01hcms6aG92ZXIge1xuICAgICAgICAgICAgYm94LXNoYWRvdzogaW5zZXQgMCAwIDAgMnB4ICR7Y29sb3JzLnNoYWRvd307XG4gICAgICAgICAgfVxuICAgICAgICAgIC50aXRsZSB7XG4gICAgICAgICAgICBtYXJnaW46IDAgMjBweDtcbiAgICAgICAgICB9XG4gICAgICAgICAgLnRpdGxlIGEge1xuICAgICAgICAgICAgY29sb3I6ICR7Y29sb3JzLnRleHR9O1xuICAgICAgICAgICAgZGlzcGxheTogYmxvY2s7XG4gICAgICAgICAgfVxuICAgICAgICAgIC50aXRsZSBhOmhvdmVyIHtcbiAgICAgICAgICAgIGNvbG9yOiAke2NvbG9ycy5wcmltYXJ5fTtcbiAgICAgICAgICB9XG4gICAgICAgICAgYnV0dG9uIHtcbiAgICAgICAgICAgIGJhY2tncm91bmQ6ICR7Y29sb3JzLnNoYWRvd307XG4gICAgICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiA1MCU7XG4gICAgICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgICAgICBjb2xvcjogJHtjb2xvcnMucHJpbWFyeX07XG4gICAgICAgICAgICBmbGV4LXNocmluazogMDtcbiAgICAgICAgICAgIGZvbnQtc2l6ZTogMTFweDtcbiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgICAgICAgICAgaGVpZ2h0OiAyMHB4O1xuICAgICAgICAgICAgbGluZS1oZWlnaHQ6IDIwcHg7XG4gICAgICAgICAgICBtYXJnaW46IDAgMCAwIGF1dG87XG4gICAgICAgICAgICBvdXRsaW5lOiAwO1xuICAgICAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgICAgICAgIHdpZHRoOiAyMHB4O1xuICAgICAgICAgIH1cbiAgICAgICAgICBidXR0b246aG92ZXIge1xuICAgICAgICAgICAgYmFja2dyb3VuZDogJHtjb2xvcnMucHJpbWFyeX07XG4gICAgICAgICAgICBjb2xvcjogd2hpdGU7XG4gICAgICAgICAgfVxuICAgICAgICBgfTwvc3R5bGU+XG4gICAgPC9saT5cbiAgKTtcbn1cbik7XG4iXX0= */\n/*@ sourceURL=/Users/mikeborowy/Dev/react-ts-next-to-do/components/Task.tsx */")));
+  }, "li.__jsx-style-dynamic-selector{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;border:1px solid ".concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].border, ";display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;padding:14px;}li.__jsx-style-dynamic-selector+li.__jsx-style-dynamic-selector{margin-top:-1px;}li.__jsx-style-dynamic-selector:nth-child(odd){background:").concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].liteBg, ";}label.__jsx-style-dynamic-selector{cursor:pointer;}input.__jsx-style-dynamic-selector{cursor:pointer;opacity:0;pointer-events:none;position:absolute;}.checkMark.__jsx-style-dynamic-selector{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;border:1px solid ").concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, ";border-radius:50%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;height:30px;width:30px;}.checkMark.__jsx-style-dynamic-selector:before{border:solid ").concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, ";border-width:0 3px 3px 0;content:'';display:block;height:12px;opacity:0;-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);width:7px;}input.__jsx-style-dynamic-selector:checked+.checkMark.__jsx-style-dynamic-selector:before{opacity:1;}.checkMark.__jsx-style-dynamic-selector:hover{box-shadow:inset 0 0 0 2px ").concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, ";}.title.__jsx-style-dynamic-selector{margin:0 20px;}.title.__jsx-style-dynamic-selector a.__jsx-style-dynamic-selector{color:").concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].text, ";display:block;}.title.__jsx-style-dynamic-selector a.__jsx-style-dynamic-selector:hover{color:").concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, ";}button.__jsx-style-dynamic-selector{background:").concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].shadow, ";border:none;border-radius:50%;cursor:pointer;color:").concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, ";-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;font-size:11px;font-weight:bold;height:20px;line-height:20px;margin:0 0 0 auto;outline:0;padding:0;text-align:center;width:20px;}button.__jsx-style-dynamic-selector:hover{background:").concat(_styles_constants__WEBPACK_IMPORTED_MODULE_3__["colors"].primary, ";color:white;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9taWtlYm9yb3d5L0Rldi9yZWFjdC10cy1uZXh0LXRvLWRvL2NvbXBvbmVudHMvVGFzay50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBMkNrQixBQUdnQyxBQU1ILEFBR3dCLEFBR3pCLEFBR0EsQUFNSSxBQVN1QixBQVVoQyxBQUc4QyxBQUcxQyxBQUdxQixBQUlBLEFBR0ssQUFpQkEsVUFoQzFDLElBTUEsQ0FsQ0EsQUFHWSxDQVRaLFNBVXNCLFVBaUNOLEFBSWhCLEtBNUNBLEFBK0NjLEFBaUJBLEVBM0NhLEdBYlAsSUFpQ3BCLEdBT29CLEFBaUJwQixJQS9CQSxPQXpCQSxJQWFhLEdBMkJJLFFBMUJELE9BMkJxQixPQTFCdkIsQ0FqQ2tDLEFBcUJBLFdBYXBDLFVBQ2MsTUF5QlYsbUJBM0RELEFBcUJLLGtCQUNMLG1CQXNDRSxlQUNFLE9BMUJQLFVBQ1osQUEwQmMsS0E3REMsT0E4REksTUE3RG5CLEtBcUJ5QixNQXlDTCxrQkFDUixVQUNBLFVBQ1Esa0JBQ1AsV0FDYiwwQkE3Q2MsWUFDRCxXQUNiIiwiZmlsZSI6Ii9Vc2Vycy9taWtlYm9yb3d5L0Rldi9yZWFjdC10cy1uZXh0LXRvLWRvL2NvbXBvbmVudHMvVGFzay50c3giLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xuaW1wb3J0IExpbmsgZnJvbSAnbmV4dC9saW5rJztcbmltcG9ydCB7IGNvbG9ycyB9IGZyb20gJy4uL3N0eWxlcy9jb25zdGFudHMnO1xuaW1wb3J0IHsgVGFza1N0YXR1cyBhcyBJVGFza1N0YXR1cyB9IGZyb20gJy4uL3Jlc291cmNlcy9ncWwtdHlwZXMnO1xuXG5leHBvcnQgaW50ZXJmYWNlIElUYXNrIHtcbiAgaWQ6IG51bWJlcjtcbiAgdGl0bGU6IHN0cmluZztcbiAgc3RhdHVzOiBJVGFza1N0YXR1cztcbiAga2V5PzogbnVtYmVyIHwgc3RyaW5nO1xufTtcblxuZXhwb3J0IGludGVyZmFjZSBQcm9wcyBleHRlbmRzIElUYXNrIHtcbiAgb25EZWxldGVUYXNrOiAoaWQ6IG51bWJlcikgPT4gdm9pZDtcbiAgb25DaGFuZ2VUYXNrU3RhdHVzOiAoaWQ6IG51bWJlciwgc3RhdHVzOiBJVGFza1N0YXR1cykgPT4gdm9pZDtcbn1cblxuZXhwb3J0IGNvbnN0IFRhc2sgPSBSZWFjdC5tZW1vPFByb3BzPigocHJvcHMpID0+IHtcblxuICBjb25zdCB7IGlkLCB0aXRsZSwgc3RhdHVzLCBvbkRlbGV0ZVRhc2ssIG9uQ2hhbmdlVGFza1N0YXR1cyB9ID0gcHJvcHM7XG4gIGNvbnN0IG9uQ2hhbmdlSGFuZGxlciA9IChldnQ6IFJlYWN0LkNoYW5nZUV2ZW50PEhUTUxJbnB1dEVsZW1lbnQ+KSA9PiB7XG4gICAgY29uc3Qgc3RhdHVzID0gZXZ0LnRhcmdldC5jaGVja2VkXG4gICAgICA/IElUYXNrU3RhdHVzLmNvbXBsZXRlZFxuICAgICAgOiBJVGFza1N0YXR1cy5hY3RpdmU7XG4gICAgb25DaGFuZ2VUYXNrU3RhdHVzKGlkLCBzdGF0dXMpXG4gIH1cblxuICByZXR1cm4gKFxuICAgIDxsaT5cbiAgICAgIDxsYWJlbD5cbiAgICAgICAgPGlucHV0XG4gICAgICAgICAgdHlwZT1cImNoZWNrYm94XCJcbiAgICAgICAgICBjaGVja2VkPXtzdGF0dXMgPT09IElUYXNrU3RhdHVzLmNvbXBsZXRlZH1cbiAgICAgICAgICBvbkNoYW5nZT17b25DaGFuZ2VIYW5kbGVyfVxuICAgICAgICAvPlxuICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJjaGVja01hcmtcIiAvPlxuICAgICAgPC9sYWJlbD5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGl0bGVcIj5cbiAgICAgICAgPExpbmsgaHJlZj17eyBwYXRobmFtZTogJy9lZGl0JywgcXVlcnk6IHsgaWQgfSB9fT5cbiAgICAgICAgICA8YT57dGl0bGV9PC9hPlxuICAgICAgICA8L0xpbms+XG4gICAgICA8L2Rpdj5cbiAgICAgIDxidXR0b24gb25DbGljaz17KCkgPT4geyBvbkRlbGV0ZVRhc2sgJiYgb25EZWxldGVUYXNrKGlkKSB9fT4mdGltZXM7PC9idXR0b24+XG4gICAgICA8c3R5bGUganN4PntgXG4gICAgICAgICAgbGkge1xuICAgICAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICAgICAgICAgIGJvcmRlcjogMXB4IHNvbGlkICR7Y29sb3JzLmJvcmRlcn07XG4gICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgICAgcGFkZGluZzogMTRweDtcbiAgICAgICAgICB9XG4gICAgICAgICAgbGkgKyBsaSB7XG4gICAgICAgICAgICBtYXJnaW4tdG9wOiAtMXB4O1xuICAgICAgICAgIH1cbiAgICAgICAgICBsaTpudGgtY2hpbGQob2RkKSB7XG4gICAgICAgICAgICBiYWNrZ3JvdW5kOiAke2NvbG9ycy5saXRlQmd9O1xuICAgICAgICAgIH1cbiAgICAgICAgICBsYWJlbCB7XG4gICAgICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgICAgfVxuICAgICAgICAgIGlucHV0IHtcbiAgICAgICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgICAgIG9wYWNpdHk6IDA7XG4gICAgICAgICAgICBwb2ludGVyLWV2ZW50czogbm9uZTtcbiAgICAgICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgICAgICB9XG4gICAgICAgICAgLmNoZWNrTWFyayB7XG4gICAgICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICAgICAgYm9yZGVyOiAxcHggc29saWQgJHtjb2xvcnMucHJpbWFyeX07XG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiA1MCU7XG4gICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgICAgICBoZWlnaHQ6IDMwcHg7XG4gICAgICAgICAgICB3aWR0aDogMzBweDtcbiAgICAgICAgICB9XG4gICAgICAgICAgLmNoZWNrTWFyazpiZWZvcmUge1xuICAgICAgICAgICAgYm9yZGVyOiBzb2xpZCAke2NvbG9ycy5wcmltYXJ5fTtcbiAgICAgICAgICAgIGJvcmRlci13aWR0aDogMCAzcHggM3B4IDA7XG4gICAgICAgICAgICBjb250ZW50OiAnJztcbiAgICAgICAgICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgICAgICAgICAgaGVpZ2h0OiAxMnB4O1xuICAgICAgICAgICAgb3BhY2l0eTogMDtcbiAgICAgICAgICAgIHRyYW5zZm9ybTogcm90YXRlKDQ1ZGVnKTtcbiAgICAgICAgICAgIHdpZHRoOiA3cHg7XG4gICAgICAgICAgfVxuICAgICAgICAgIGlucHV0OmNoZWNrZWQgKyAuY2hlY2tNYXJrOmJlZm9yZSB7XG4gICAgICAgICAgICBvcGFjaXR5OiAxO1xuICAgICAgICAgIH1cbiAgICAgICAgICAuY2hlY2tNYXJrOmhvdmVyIHtcbiAgICAgICAgICAgIGJveC1zaGFkb3c6IGluc2V0IDAgMCAwIDJweCAke2NvbG9ycy5zaGFkb3d9O1xuICAgICAgICAgIH1cbiAgICAgICAgICAudGl0bGUge1xuICAgICAgICAgICAgbWFyZ2luOiAwIDIwcHg7XG4gICAgICAgICAgfVxuICAgICAgICAgIC50aXRsZSBhIHtcbiAgICAgICAgICAgIGNvbG9yOiAke2NvbG9ycy50ZXh0fTtcbiAgICAgICAgICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgICAgICAgIH1cbiAgICAgICAgICAudGl0bGUgYTpob3ZlciB7XG4gICAgICAgICAgICBjb2xvcjogJHtjb2xvcnMucHJpbWFyeX07XG4gICAgICAgICAgfVxuICAgICAgICAgIGJ1dHRvbiB7XG4gICAgICAgICAgICBiYWNrZ3JvdW5kOiAke2NvbG9ycy5zaGFkb3d9O1xuICAgICAgICAgICAgYm9yZGVyOiBub25lO1xuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNTAlO1xuICAgICAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICAgICAgY29sb3I6ICR7Y29sb3JzLnByaW1hcnl9O1xuICAgICAgICAgICAgZmxleC1zaHJpbms6IDA7XG4gICAgICAgICAgICBmb250LXNpemU6IDExcHg7XG4gICAgICAgICAgICBmb250LXdlaWdodDogYm9sZDtcbiAgICAgICAgICAgIGhlaWdodDogMjBweDtcbiAgICAgICAgICAgIGxpbmUtaGVpZ2h0OiAyMHB4O1xuICAgICAgICAgICAgbWFyZ2luOiAwIDAgMCBhdXRvO1xuICAgICAgICAgICAgb3V0bGluZTogMDtcbiAgICAgICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICAgICAgICB3aWR0aDogMjBweDtcbiAgICAgICAgICB9XG4gICAgICAgICAgYnV0dG9uOmhvdmVyIHtcbiAgICAgICAgICAgIGJhY2tncm91bmQ6ICR7Y29sb3JzLnByaW1hcnl9O1xuICAgICAgICAgICAgY29sb3I6IHdoaXRlO1xuICAgICAgICAgIH1cbiAgICAgICAgYH08L3N0eWxlPlxuICAgIDwvbGk+XG4gICk7XG59XG4pO1xuIl19 */\n/*@ sourceURL=/Users/mikeborowy/Dev/react-ts-next-to-do/components/Task.tsx */")));
 });
 
 /***/ }),
@@ -5913,7 +5916,6 @@ var MainPage = function MainPage(props) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              debugger;
               apollo.mutate({
                 mutation: _graphql_change_status_graphql__WEBPACK_IMPORTED_MODULE_11___default.a,
                 variables: {
@@ -5944,7 +5946,7 @@ var MainPage = function MainPage(props) {
                 }
               });
 
-            case 2:
+            case 1:
             case "end":
               return _context.stop();
           }
@@ -6009,7 +6011,7 @@ var MainPage = function MainPage(props) {
     };
   }();
 
-  var onChangeTaskStatus = Object(react__WEBPACK_IMPORTED_MODULE_9__["useCallback"])(function (id, status, taskFilter) {
+  var onChangeTaskStatus = Object(react__WEBPACK_IMPORTED_MODULE_9__["useCallback"])(function (id, status) {
     return changeTaskStatus(id, status, taskFilter, client);
   }, [taskFilter]);
   var onDeleteTask = Object(react__WEBPACK_IMPORTED_MODULE_9__["useCallback"])(function (id) {
@@ -6029,7 +6031,7 @@ var MainPage = function MainPage(props) {
         }, taskProps, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 113
+            lineNumber: 111
           },
           __self: this
         }));
@@ -6037,7 +6039,7 @@ var MainPage = function MainPage(props) {
       return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("ul", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 117
+          lineNumber: 115
         },
         __self: this
       }, tasksList);
@@ -6048,14 +6050,15 @@ var MainPage = function MainPage(props) {
     return function (props) {
       var error = props.error,
           loading = props.loading,
-          tasks = props.data.tasks,
+          data = props.data,
           refetch = props.refetch;
+      var tasks = data && data.tasks;
 
       if (error) {
         return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 135
+            lineNumber: 133
           },
           __self: this
         }, "Something went wrong");
@@ -6064,27 +6067,27 @@ var MainPage = function MainPage(props) {
       return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 138
+          lineNumber: 136
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_CreateTaskForm__WEBPACK_IMPORTED_MODULE_17__["CreateTaskFormWithGQL"], {
         onCreateTask: refetch,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 139
+          lineNumber: 137
         },
         __self: this
       }), loading ? react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Loader__WEBPACK_IMPORTED_MODULE_15__["Loader"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 140
+          lineNumber: 138
         },
         __self: this
       }) : renderTasksList(tasks || []), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_TaskFilter__WEBPACK_IMPORTED_MODULE_18__["TaskFilter"], {
         filter: taskFilter,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 141
+          lineNumber: 139
         },
         __self: this
       }));
@@ -6094,21 +6097,22 @@ var MainPage = function MainPage(props) {
   return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Layout__WEBPACK_IMPORTED_MODULE_14__["Layout"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 147
+      lineNumber: 145
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 148
+      lineNumber: 146
     },
     __self: this
   }, "Hello World!"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(ApolloTasksQuery, {
     query: _graphql_tasks_graphql__WEBPACK_IMPORTED_MODULE_12___default.a,
     variables: taskFilter,
+    fetchPolicy: "cache-and-network",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 149
+      lineNumber: 147
     },
     __self: this
   }, renderTaskQuery(taskFilter)));

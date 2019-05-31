@@ -16,7 +16,7 @@ import { Loader } from '../components/Loader';
 import { Task, ITask } from '../components/Task';
 import { CreateTaskFormWithGQL } from '../components/CreateTaskForm';
 import { ApolloClient } from 'apollo-boost';
-import { useCallback, useState, useEffect } from 'react';
+import { useCallback } from 'react';
 import { TaskFilter, ITaskFilter } from '../components/TaskFilter';
 import { NextFunctionComponent } from 'next';
 
@@ -42,7 +42,6 @@ export interface IProps extends IDefaultProps { }
 const MainPage: NextFunctionComponent<WithApolloClient<IProps>, IDefaultProps> = (props) => {
   const { client, taskFilter } = props;
   const changeTaskStatus = async (id: number, status: ITaskStatus, taskFilter: ITaskFilter, apollo: ApolloClient<any>) => {
-    debugger
     apollo.mutate<IChangeStatusMutation, IChangeStatusMutationVariables>({
       mutation: CHANGE_STATUS_MUTATION,
       variables: { id, status },
@@ -62,9 +61,7 @@ const MainPage: NextFunctionComponent<WithApolloClient<IProps>, IDefaultProps> =
             },
             data: {
               tasks: taskFilter.status
-                ? tasksCache.tasks.filter(
-                  task => task.status === taskFilter.status
-                )
+                ? tasksCache.tasks.filter(task => task.status === taskFilter.status)
                 : tasksCache.tasks
             }
           })
@@ -97,7 +94,8 @@ const MainPage: NextFunctionComponent<WithApolloClient<IProps>, IDefaultProps> =
   }
 
   const onChangeTaskStatus = useCallback(
-    (id: number, status: ITaskStatus, taskFilter: ITaskFilter) => changeTaskStatus(id, status, taskFilter, client),
+    (id: number, status: ITaskStatus) =>
+      changeTaskStatus(id, status, taskFilter, client),
     [taskFilter]
   );
 
@@ -125,11 +123,11 @@ const MainPage: NextFunctionComponent<WithApolloClient<IProps>, IDefaultProps> =
     const {
       error,
       loading,
-      data: {
-        tasks
-      },
+      data,
       refetch
     } = props;
+
+    const tasks = data && data.tasks;
 
     if (error) {
       return <p>Something went wrong</p>
@@ -149,6 +147,7 @@ const MainPage: NextFunctionComponent<WithApolloClient<IProps>, IDefaultProps> =
       <ApolloTasksQuery
         query={TASKS_QUERY}
         variables={taskFilter}
+        fetchPolicy="cache-and-network"
       >
         {renderTaskQuery(taskFilter)}
       </ApolloTasksQuery>

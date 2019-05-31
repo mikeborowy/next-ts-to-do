@@ -11,24 +11,27 @@ export interface ITask {
 };
 
 export interface Props extends ITask {
-  onDeleteTask?: (id: number) => void;
-  onChangeTaskStatus?: (id: number, status: ITaskStatus) => void;
+  onDeleteTask: (id: number) => void;
+  onChangeTaskStatus: (id: number, status: ITaskStatus) => void;
 }
 
 export const Task = React.memo<Props>((props) => {
+
   const { id, title, status, onDeleteTask, onChangeTaskStatus } = props;
+  const onChangeHandler = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const status = evt.target.checked
+      ? ITaskStatus.completed
+      : ITaskStatus.active;
+    onChangeTaskStatus(id, status)
+  }
+
   return (
     <li>
       <label>
         <input
           type="checkbox"
           checked={status === ITaskStatus.completed}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            const status = e.target.checked
-              ? ITaskStatus.completed
-              : ITaskStatus.active;
-            onChangeTaskStatus && onChangeTaskStatus(id, status);
-          }}
+          onChange={onChangeHandler}
         />
         <span className="checkMark" />
       </label>
