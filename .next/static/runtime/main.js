@@ -6655,7 +6655,7 @@ function connect(options) {
       error.name = err.name;
       error.stack = err.stack; // __NEXT_DIST_DIR is provided by webpack
 
-      source_map_support_1.rewriteStacktrace(error, "/Users/mikeborowy/Dev/react-ts-next-to-do/.next");
+      source_map_support_1.rewriteStacktrace(error, "/Users/michalborowy/_dev/react-ts-next-to-do/.next");
       return error;
     }
   };

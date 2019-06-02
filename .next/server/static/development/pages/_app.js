@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/mikeborowy/Dev/react-ts-next-to-do/hoc/withApolloClient.tsx";
+var _jsxFileName = "/Users/michalborowy/_dev/react-ts-next-to-do/hoc/withApolloClient.tsx";
 
 
 
@@ -4102,7 +4102,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/mikeborowy/Dev/react-ts-next-to-do/pages/_app.tsx";
+var _jsxFileName = "/Users/michalborowy/_dev/react-ts-next-to-do/pages/_app.tsx";
 
 
 

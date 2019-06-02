@@ -1,4 +1,5 @@
-import { Query, withApollo, WithApolloClient } from 'react-apollo';
+import React, { useState, useEffect } from 'react';
+import { withApollo, WithApolloClient } from 'react-apollo';
 import CHANGE_STATUS_MUTATION from '../graphql/change-status.graphql';
 import TASKS_QUERY from '../graphql/tasks.graphql';
 import DELETE_TASK_MUTATION from '../graphql/delete-task.graphql';
@@ -19,6 +20,9 @@ import { ApolloClient } from 'apollo-boost';
 import { useCallback } from 'react';
 import { TaskFilter, ITaskFilter } from '../components/TaskFilter';
 import { NextFunctionComponent } from 'next';
+import { WithTasksQuery } from '../hoc/withTaskQuery';
+import { Notification } from '../components/Notification';
+import { NotificationButtons } from '../components/NotificationButtons';
 
 export interface IData {
   tasks: ITask[]
@@ -31,16 +35,42 @@ export interface IQuery {
   refetch: () => {};
 }
 
-export class ApolloTasksQuery extends Query<ITasksQuery, ITasksQueryVariables> { }
-
 export interface IDefaultProps {
   taskFilter: ITaskFilter;
 }
 
-export interface IProps extends IDefaultProps { }
+export interface IDefaultState extends IState{
+
+}
+
+interface IState{
+  showNotification:boolean;
+}
+
+interface IProps extends IDefaultProps { }
+
+const initialState:IState = {
+  showNotification:false
+}
 
 const MainPage: NextFunctionComponent<WithApolloClient<IProps>, IDefaultProps> = (props) => {
   const { client, taskFilter } = props;
+  const [state, setState ] = useState<IState>(initialState);
+
+  useEffect(() => {
+    if(localStorage.getItem('showNotification')){
+      const showNotification = localStorage.getItem('showNotification') === 'true' ? true : false;
+      setState({ showNotification })
+    }
+  },[]);
+
+  const dismissHandler = (evt:React.MouseEvent<HTMLAnchorElement>) => {
+    evt.preventDefault();
+    const showNotification = false;
+    setState({showNotification});
+    localStorage.setItem('showNotification', `${showNotification}`);
+  }
+
   const changeTaskStatus = async (id: number, status: ITaskStatus, taskFilter: ITaskFilter, apollo: ApolloClient<any>) => {
     apollo.mutate<IChangeStatusMutation, IChangeStatusMutationVariables>({
       mutation: CHANGE_STATUS_MUTATION,
@@ -141,16 +171,33 @@ const MainPage: NextFunctionComponent<WithApolloClient<IProps>, IDefaultProps> =
     )
   }
 
+  const renderNotifications = () => {
+    return(
+      <React.Fragment>
+        <Notification>
+          <p>
+            Limited time offer! Get our <em>Pro</em> subscriptions.
+          </p>
+        </Notification>
+        <NotificationButtons>
+          <a href="#">Learn More</a>
+          <a href="#" onClick={dismissHandler}>Dismiss</a>
+        </NotificationButtons>
+      </React.Fragment>
+    )
+  }
+
   return (
     <Layout>
+      {state.showNotification && renderNotifications()}
       <div>Hello World!</div>
-      <ApolloTasksQuery
+      <WithTasksQuery
         query={TASKS_QUERY}
         variables={taskFilter}
         fetchPolicy="cache-and-network"
       >
         {renderTaskQuery(taskFilter)}
-      </ApolloTasksQuery>
+      </WithTasksQuery>
     </Layout>
   )
 };
